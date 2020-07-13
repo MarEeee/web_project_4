@@ -1,0 +1,18 @@
+@import url("./__close-button/edit-form__close-button.css");
+@import url("./__input/edit-form__input.css");
+@import url("./__profile/edit-form__profile.css");
+@import url("./__save-button/edit-form__save-button.css");
+@import url("./__title/edit-form__title.css");
+
+.edit-form{   
+    color: #000;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

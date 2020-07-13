@@ -1,0 +1,11 @@
+.photo__info{
+    padding: 0;    
+    display: flex;
+    flex-direction: row;
+    
+
+    height:79px;
+    background-color: #FFFFFF;
+    border-radius: 0 0 10px 10px;
+    
+}

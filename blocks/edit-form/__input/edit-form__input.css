@@ -1,0 +1,20 @@
+.edit-form__input{
+    outline: none;
+    border: none;
+    margin: 30px 36px 0 36px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding-bottom: 13px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #000000;
+    
+}
+
+.edit-form__input:first-child{
+    margin-top: 0;
+}

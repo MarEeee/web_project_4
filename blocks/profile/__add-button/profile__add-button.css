@@ -1,0 +1,26 @@
+@import url("./__rectangle/add-button__rectangle.css");
+
+
+.profile__add-button{
+    
+    margin: 35px 0 35px 154px;
+    width: 150px;
+    
+    border: 2px solid #FFFFFF;
+
+    cursor: pointer;
+}
+
+.profile__add-button:hover{
+    opacity: 0.6;
+    
+}
+
+@media screen and (max-width: 767px){   
+    .profile__add-button{  
+        margin: 36px auto;      
+        width: 100%;    
+        height: 50px;
+        
+    }
+}
