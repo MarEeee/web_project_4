@@ -1,5 +1,8 @@
-.photo__button{
-   
-    margin: 31px 30px auto auto;
-    
+.photo__button{      
+    margin: 31px 30px 30px auto;
+    background-image: url("../../../images/like.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 18px;
 }

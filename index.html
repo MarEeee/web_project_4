@@ -7,39 +7,21 @@
         <title>Around The U.S.</title>
     </head>
     <body>
-        <section class = "page">
+        <div class = "page">
+
             <header class = "header">
                 <img class = "header__logo" src="images/logo.svg" alt = "logo">
-                <div class = "header__line"></div>
+                <!-- <div class = "header__line"></div> -->
             </header>
 
             <main class = "content">
-               
-                <form class = "edit-form disabled">
-                    
-                    <div class = "edit-form__profile">
-                        <button class = "edit-form__close-button" type="reset" >
-                            <img class = "close-button__image" src="images/close.svg">
-                        </button>
-                        <h2 class = "edit-form__title">Edit profile</h2>
-                        <input type="text" placeholder="Title" class="edit-form__input input__type_title">
-                        
-                        <input type="text" placeholder="Info" class="edit-form__input input__type_info">
-
-
-                        <button class = "edit-form__save-button" type="submit">Save</button>
-                    </div>
-
-                </form>                
-
 
                 <section class = "profile">
-                    <img class = "profile__avatar" src = "images/avatar.png">                       
+                    <img class = "profile__avatar" src = "images/avatar.png" alt = "avatar">                       
                    
                     <div class = "profile__info">
-                        <h2 class = "profile__title">Fallout 4</h2>
-                        <button class = "profile__edit-button">
-                            <img class = "edit-button__image" src = "images/edit-button.svg" alt = "button-image">
+                        <h1 class = "profile__title">Fallout 4</h1>
+                        <button class = "profile__edit-button">                            
                             <div class = "edit-button__rectangle"></div>
                         </button>
 
@@ -47,7 +29,6 @@
                         
                     </div>
                     <button class = "profile__add-button">
-                        <img class = "add-button__image" src = "images/add-button.svg" alt = "add-button">
                         <div class = "add-button__rectangle"></div>
                     </button>
                 </section>
@@ -55,74 +36,55 @@
                 <section class = "photo">
                     <ul class = "photo__elements">
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place1.png" alt = "">
+                            <img class = "photo__image" src = "images/place1.png" alt = "Dunwich Borers">
                             
                             <div class = "photo__info">
                                 <h3 class = "photo__title">Dunwich Borers</h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
 
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place2.png" alt = "">
+                            <img class = "photo__image" src = "images/place2.png" alt = "Pickman's gallery">
                             
                             <div class = "photo__info">
                                 <h3 class = "photo__title">Pickman's gallery </h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
 
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place3.png" alt = "">
+                            <img class = "photo__image" src = "images/place3.png" alt = "Glowing Sea">
                             
                             <div class = "photo__info">
                                 <h3 class = "photo__title">Glowing Sea</h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
 
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place4.png" alt = "">
+                            <img class = "photo__image" src = "images/place4.png" alt = "HalluciGen, Inc">
                             
                             <div class = "photo__info">
                                 <h3 class = "photo__title">HalluciGen, Inc</h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
 
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place5.png" alt = "">
+                            <img class = "photo__image" src = "images/place5.png" alt = "Federal Surveillence">
                             
                             <div class = "photo__info">
                                 <h3 class = "photo__title">Federal Surveillence</h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
 
                         <li class = "photo__element">
-                            <img class = "photo__image" src = "images/place6.png" alt = "">
-                            
+                            <img class = "photo__image" src = "images/place6.png" alt = "Fens Street sewer">                            
                             <div class = "photo__info">
                                 <h3 class = "photo__title">Fens Street sewer</h3>
-                                <button class = "photo__button">
-                                    <img src = "images/like.svg">
-
-                                </button>
+                                <button class = "photo__button"></button>
                             </div>
                         </li>
                         
@@ -131,8 +93,27 @@
                         <p class = "footer__copyright">© 2020 Around The U.S</p>
                     </footer>
                 </section>
+                
+                <form class = "form disabled">
+                    
+                    <div class = "form__profile">
+                        <button class = "form__close-button" type="reset" ></button>
+                        <h2 class = "form__title">Edit profile</h2>
+                        <input type="text" placeholder="Title" class="form__input input__type_title">
+                        
+                        <input type="text" placeholder="Info" class="form__input input__type_info">
+
+
+                        <button class = "form__save-button" type="submit">Save</button>
+                    </div>
+
+                </form> 
+
+
+
+
             </main>
-        </section>
+        </div>
 
         <script src="index.js"></script>
     </body>

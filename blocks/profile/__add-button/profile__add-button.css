@@ -6,6 +6,9 @@
     margin: 35px 0 35px 154px;
     width: 150px;
     
+    background-image: url("../../../images/add-button.svg");
+    background-repeat: no-repeat;
+    background-position: center;
     border: 2px solid #FFFFFF;
 
     cursor: pointer;

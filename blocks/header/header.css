@@ -1,15 +1,20 @@
 @import url("./__logo/header__logo.css");
-@import url("./__line/header__line.css");
 
 .header{
     display: flex;
     margin: 0 auto 0;
     flex-direction: column;
     width: 882px;
+
+
+    border-bottom: 1px solid rgb(84, 84, 84, 0.7);
+    padding-bottom: 41px;
+    
 }
 
 @media screen and (max-width: 767px){
     .header{
         width: 320px;
+        padding-bottom: 32px;
     }
 }
