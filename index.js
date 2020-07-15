@@ -2,8 +2,8 @@ const container = document.querySelector(".page");
 const editForm = document.querySelector(".form"); 
 const editButton = container.querySelector(".profile__edit-button");
 const closeButton = container.querySelector(".form__close-button");
-const titleInput = document.querySelector(".input__type_title");
-const infoInput = document.querySelector(".input__type_info");
+const titleInput = document.querySelector(".form__input_type_title");
+const infoInput = document.querySelector(".form__input_type_info");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 

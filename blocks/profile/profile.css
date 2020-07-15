@@ -4,7 +4,7 @@
 @import url("./__edit-button/profile__edit-button.css");
 @import url("./__title/profile__title.css");
 @import url("./__subtitle/profile__subtitle.css");
-@import url("./__rectangle/profile__rectangle.css");
+
 
 .profile{
     display: flex;
@@ -18,7 +18,6 @@
 @media screen and (max-width: 767px){   
     .profile{
         flex-direction: column;          
-        width: 282px;    
-        
+        width: 282px;            
     }
 }
