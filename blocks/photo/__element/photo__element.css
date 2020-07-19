@@ -1,4 +1,6 @@
-.photo__element{
-    width: 100%;
-   
+.photo__element{   
+    position: relative;
+    width: 100%;  
+    max-height: 361px;
+    
 }

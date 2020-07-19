@@ -7,3 +7,47 @@
 @import url("../blocks/footer/footer.css");
 @import url("../vendor/normalize.css");
 @import url("../fonts/inter.css");
+
+
+.photo__remove{
+    position: absolute;
+    background-image: url("../images/remove-button.svg");
+    background-size: contain;
+    width: 18px;
+    height: 19px;
+
+    right: 15px;
+    top:18px;
+
+    
+    background-position: center;
+}
+.photo__remove:hover{
+    opacity: 0.7;
+}
+
+.photo__like_active{
+    background-image: url("../images/like_active.svg");
+}
+
+.form__button{
+    width: 84%;
+    height: 50px;
+
+
+    font-family: 'Inter','Arial', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+
+    margin: auto;
+    color: #FFFFFF;
+    background: #000000;
+    border-radius: 2px;
+}
+
+
+.form__create_button{
+    
+}
