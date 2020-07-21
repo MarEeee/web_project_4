@@ -32,19 +32,19 @@
 
                 <section class = "photo">
                     <ul class = "photo__elements">
-                        <template class = "photo__element">
-                            <button class ="photo__remove"></button>                            
-                            <img class = "photo__image" src = "images/place1.png" alt = "Dunwich Borers">
-                            
-                            
-                            <div class = "photo__info">
-                                <h3 class = "photo__title">Dunwich Borers</h3>
-                                <button class = "photo__button" aria-label = "like"></button>
-                            </div>
+                        <template id = "photo__element">
+                            <li class = "photo__element">
+                                <button class ="photo__remove"></button>                            
+                                <img class = "photo__image" src = "" alt = "">
+                                
+                                
+                                <div class = "photo__info">
+                                    <h3 class = "photo__title"></h3>
+                                    <button class = "photo__button" aria-label = "like"></button>
+                                </div>
+                            </li>
                         </template>
-
-
-                        <li class = "photo__element">
+                        <!-- <li class = "photo__element">
                             <button class ="photo__remove"></button>                            
                             <img class = "photo__image" src = "images/place1.png" alt = "Dunwich Borers">
                             
@@ -102,33 +102,30 @@
                                 <h3 class = "photo__title">Fens Street sewer</h3>
                                 <button class = "photo__button" aria-label = "like"></button>
                             </div>
-                        </li>
-                        
+                        </li> -->                        
                     </ul>
+                    
                     <footer class = "footer">
                         <p class = "footer__copyright">© 2020 Around The U.S</p>
                     </footer>
                 </section>
                 
-                <form class = "form edit_form disabled">
-                    
+                <form class = "form edit_form disabled">                    
                     <div class = "form__profile">
-                        <button class = "form__close-button" type="reset" ></button>
+                        <button class = "form__close-button" aria-label="Close edit form" type="reset" ></button>
                         <h2 class = "form__title">Edit Profile</h2>
-                        <input type="text" placeholder="Title" class="form__input form__input_type_title">
+                        <input type="text" placeholder="Title" class="form__input form__input_type_place-name">
                         
                         <input type="text" placeholder="Info" class="form__input form__input_type_info">
 
 
                         <button class = "form__button form__save-button" type="submit">Save</button>
                     </div>
-
                 </form> 
 
-                <form class = "form create_form disabled">
-                    
+                <form class = "form create_form disabled">                    
                     <div class = "form__profile">
-                        <button class = "form__close-button" type="reset" ></button>
+                        <button class = "form__close-button" aria-label="Close add form" type="reset" ></button>
                         <h2 class = "form__title">New place</h2>
                         <input type="text" placeholder="Title" class="form__input form__input_type_title">
                         
@@ -137,12 +134,7 @@
 
                         <button class = "form__button form__create-button" type="submit">Create</button>
                     </div>
-
                 </form> 
-
-
-
-
             </main>
         </div>
 

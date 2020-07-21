@@ -26,9 +26,6 @@
     opacity: 0.7;
 }
 
-.photo__like_active{
-    background-image: url("../images/like_active.svg");
-}
 
 .form__button{
     width: 84%;
@@ -47,7 +44,10 @@
     border-radius: 2px;
 }
 
+.form__button:hover{
+    opacity:0.7;
+}
 
-.form__create_button{
-    
+.photo__button_active{
+    background-image: url("../images/like_active.svg");
 }

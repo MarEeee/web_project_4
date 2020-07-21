@@ -1,13 +1,21 @@
 const container = document.querySelector(".page");
-const form = document.querySelector(".form"); 
+
 const editForm = document.querySelector(".edit_form"); 
 const createForm = document.querySelector(".create_form");
+
 const editButton = container.querySelector(".profile__edit-button");
-const closeButton = container.querySelector(".form__close-button");
+const addButton = container.querySelector(".profile__add-button");
+
+const closeEditButton = container.querySelector('[aria-label="Close edit form"]');
+const closeAddButton = container.querySelector('[aria-label="Close add form"]');
+
+
 const saveButton = container.querySelector(".form__save-button");
-const addNewCardButton = container.querySelector(".profile__add-button");
-const titleInput = document.querySelector(".form__input_type_title");
+const createNewCardButton = container.querySelector(".form__create-button");
+
+const placeNameInput = document.querySelector(".form__input_type_place-name");
 const infoInput = document.querySelector(".form__input_type_info");
+
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const formTitle = document.querySelector(".form__title");
@@ -39,52 +47,72 @@ const initialCards = [
     }
 ]
 
+ initialCards.reverse().forEach(function(item){
+    addNewCard(item.name, item.link);
+ });
 
 function editInfo(){        
     editForm.classList.remove("disabled");    
-    titleInput.setAttribute("value", profileTitle.textContent);
+    placeNameInput.setAttribute("value", profileTitle.textContent);
     infoInput.setAttribute("value", profileSubtitle.textContent);
     
 }
 
-function addNewCard(){
-    createForm.classList.remove("disabled");
-    
-   
+function addForm(){
+    createForm.classList.remove("disabled");    
+    document.querySelector(".form__input_type_title").value = "";
+    document.querySelector(".form__input_type_link").value = "";   
 }
 
 
 function closeBtnClick(){      
 
-    form.classList.add("disabled");  
+    editForm.classList.add("disabled");  
     createForm.classList.add("disabled"); 
+}
+
+
+function addNewCard(title, link){
+    
+    const cardTemplate = document.querySelector("#photo__element").content;
+    const cardElement = cardTemplate.cloneNode(true);   
+
+
+    cardElement.querySelector(".photo__title").textContent = title;
+    cardElement.querySelector(".photo__image").src = link;
+    cardElement.querySelector(".photo__button").addEventListener("click", function(evt){            
+        evt.target.classList.toggle("photo__button_active");
+    });
+    cardElement.querySelector(".photo__remove").addEventListener("click", function(item, evt){
+        document.querySelector(".photo__elements").remove(cardElement.target); //somthing wrong
+        
+    });
+    
+    document.querySelector(".photo__elements").prepend(cardElement); 
 }
 
 function formSubmitHandler(evt){
     evt.preventDefault();
-    profileTitle.textContent = titleInput.value;
-    profileSubtitle.textContent = infoInput.value;
+    console.log(evt.target.classList);
+    if(evt.target.classList[1] === "edit_form"){
+        profileTitle.textContent = placeNameInput.value;
+        profileSubtitle.textContent = infoInput.value;
+    }
+    else{
+        const newCardTitle = document.querySelector(".form__input_type_title");
+        const newCardLink = document.querySelector(".form__input_type_link");
+        addNewCard(newCardTitle.value, newCardLink.value);
+        }
+    
     closeBtnClick();   
 }
 
 
-// const photoTemplate = document.querySelector("#photo__element").content;
-// console.log(photoTemplate);
-// const photoElement = photoTemplate.clone(true);
-
-// photoElement.querySelector(".photo__button").addEventListener("click", function(evt){
-//     console.log(evt.target());
-//     evt.target.classList.toggle("photo__like_active");
-// });
-
 editButton.addEventListener("click", editInfo);
-closeButton.addEventListener("click", closeBtnClick);
+addButton.addEventListener("click", addForm);
 
-closeButton.addEventListener("click", (evt)=> {
-    closeBtnClick(evt);
-});
-
-
-addNewCardButton.addEventListener("click", addNewCard);
+closeEditButton.addEventListener("click", closeBtnClick);
+closeAddButton.addEventListener("click", closeBtnClick);
 
 editForm.addEventListener("submit", formSubmitHandler);
+createForm.addEventListener("submit", formSubmitHandler);
