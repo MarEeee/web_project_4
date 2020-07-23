@@ -1,8 +1,7 @@
 .form__close-button{
     position: relative;
     right: -100%;
-    top: -10%;    
-    
+    top: -10%;        
 
     background-image: url("../../../images/Close-Icon.png");
     background-repeat: no-repeat;
