@@ -1,8 +1,7 @@
-.form__close-button{
-    position: relative;
-    right: -100%;
-    top: -10%;        
-
+.popup__close-button{
+   position: absolute;
+   top: -10%;
+   right: -7%;
     background-image: url("../../../images/Close-Icon.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -12,13 +11,14 @@
     cursor: pointer;
 }
 
-.form__close-button:hover{
+.popup__close-button:hover{
     opacity: 0.6;
 }
 
 @media screen and (max-width: 767px){
-    .form__close-button{
-        
+    .popup__close-button{           
+        right: -12%;     
+
         height: 30px;
         width: 30px;
     }

@@ -1,0 +1,16 @@
+.photo__remove{
+    position: absolute;
+    background-image: url("../../../images/remove-button.svg");
+    background-size: contain;
+    width: 18px;
+    height: 19px;
+
+    right: 15px;
+    top:18px;
+
+    
+    background-position: center;
+}
+.photo__remove:hover{
+    opacity: 0.7;
+}

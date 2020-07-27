@@ -86,7 +86,9 @@ function addNewCard(title, link){
         evt.target.classList.toggle("photo__button_active");
     });
     cardElement.querySelector(".photo__remove").addEventListener("click", function(){
-        document.querySelector(".photo__element").remove();
+        this.parentNode.remove();
+        
+        // document.querySelector(".photo__element").remove();
     });
 
     cardElement.querySelector(".photo__button-image").addEventListener("click", function(item){       

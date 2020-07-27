@@ -1,0 +1,23 @@
+@import url("./__close-button/popup__close-button.css");
+@import url("./__title/popup__title.css");
+
+
+.popup {
+    position: fixed;
+    
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;  
+    
+    z-index: 5;
+  }
+@media screen and (max-width:767px){
+    .popup__image{
+        
+        width: 240px;
+        height: 299px;
+    }
+    
+}

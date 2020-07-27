@@ -3,6 +3,7 @@
 @import url("./__profile/form__profile.css");
 @import url("./__save-button/form__save-button.css");
 @import url("./__title/form__title.css");
+@import url("./__button/form__button.css");
 
 .form{   
     color: #000;

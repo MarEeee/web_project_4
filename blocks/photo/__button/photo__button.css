@@ -1,3 +1,5 @@
+@import url("./__button_active/photo__button_active.css");
+
 .photo__button{      
     margin: 31px 30px 30px auto;
     background-image: url("../../../images/like.svg");
@@ -11,4 +13,8 @@
 
 .photo__button:hover{
     opacity: 0.7;
+}
+
+.photo__button_active{
+    background-image: url("../../../images/like_active.svg");
 }
