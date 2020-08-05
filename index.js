@@ -22,6 +22,13 @@ const popup = container.querySelector(".popup");
 const popupImage = container.querySelector(".popup__image");
 const popupTitle =  container.querySelector(".popup__title");
 
+const formInputTitle = document.querySelector(".form__input_type_title");
+const formInputLink = document.querySelector(".form__input_type_link");
+
+const photoElements = document.querySelector(".photo__elements");
+const newCardTitle = document.querySelector(".form__input_type_title");
+const newCardLink = document.querySelector(".form__input_type_link");
+
 
 const initialCards = [
     {
@@ -59,8 +66,8 @@ function editInfo(){
 
 function openAddForm(){
     createForm.classList.remove("disabled");    
-    document.querySelector(".form__input_type_title").value = "";
-    document.querySelector(".form__input_type_link").value = "";   
+    formInputTitle.value = "";
+    formInputLink.value = "";   
 }
 
 function showImage(image, title){    
@@ -70,10 +77,8 @@ function showImage(image, title){
     popupTitle.textContent = title;
 }
 
-function closeBtnClick(){     
-    editForm.classList.add("disabled");  
-    createForm.classList.add("disabled");
-    popup.classList.add("disabled"); 
+function closeBtnClick(currentForm){   
+    currentForm.classList.add("disabled");  
 }
 
 
@@ -87,32 +92,31 @@ function addNewCard(title, link){
     cardElement.querySelector(".photo__button").addEventListener("click", (evt) => {            
         evt.target.classList.toggle("photo__button_active");
     });
-    cardElement.querySelector(".photo__remove").addEventListener("click", function(evt){
+    cardElement.querySelector(".photo__remove").addEventListener("click", (evt) => {
         evt.target.parentNode.remove();        
 
     });
 
-    cardElement.querySelector(".photo__button-image").addEventListener("click", (item) =>{       
-        
+    cardElement.querySelector(".photo__button-image").addEventListener("click", (item) =>{     
         showImage(link, title);
     });
     
-    document.querySelector(".photo__elements").prepend(cardElement); 
+    photoElements.prepend(cardElement); 
 }
 
 function formSubmitHandlerEdit(evt){
     evt.preventDefault();  
     profileTitle.textContent = placeNameInput.value;
     profileSubtitle.textContent = infoInput.value;
-    closeBtnClick();   
+    closeBtnClick(editForm);   
 }
 
 function formSubmitHandlerCreate(evt){
     evt.preventDefault();   
-    const newCardTitle = document.querySelector(".form__input_type_title");
-    const newCardLink = document.querySelector(".form__input_type_link");
+    // const newCardTitle = document.querySelector(".form__input_type_title");
+    // const newCardLink = document.querySelector(".form__input_type_link");
     addNewCard(newCardTitle.value, newCardLink.value);
-    closeBtnClick(); 
+    closeBtnClick(createForm); 
 }
 
 const initialCardsReverse = Object.assign([], initialCards).reverse();
@@ -124,9 +128,17 @@ initialCardsReverse.forEach(function(item){
 editButton.addEventListener("click", editInfo);
 addButton.addEventListener("click", openAddForm);
 
-closeEditButton.addEventListener("click", closeBtnClick);
-closeAddButton.addEventListener("click", closeBtnClick);
-closePopupButton.addEventListener("click", closeBtnClick);
+
 
 editForm.addEventListener("submit", formSubmitHandlerEdit);
 createForm.addEventListener("submit", formSubmitHandlerCreate);
+
+closeEditButton.addEventListener("click", () => {
+    closeBtnClick(editForm);
+});
+closeAddButton.addEventListener("click", () => {
+    closeBtnClick(createForm)
+});
+closePopupButton.addEventListener("click", () => {
+    closeBtnClick(popup)
+});
