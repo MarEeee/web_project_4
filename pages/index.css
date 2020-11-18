@@ -8,3 +8,32 @@
 @import url("../vendor/normalize.css");
 @import url("../fonts/inter.css");
 @import url("../blocks/popup/popup.css");
+
+
+.form__input-error{
+    visibility: hidden;
+    margin-left: 36px;
+    margin-top:5px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FF0000;
+}
+
+.form__input-error_active{
+    visibility: visible;
+}
+
+
+.form__input_type_error {
+    border-bottom-color: red;
+  } 
+
+.form__field{
+    display: flex;
+    flex-direction: column;
+}
+

@@ -142,3 +142,76 @@ closeAddButton.addEventListener("click", () => {
 closePopupButton.addEventListener("click", () => {
     closeBtnClick(popup)
 });
+
+
+
+// const editForm = document.querySelector(".edit_form"); 
+const editFormInput = editForm.querySelector(".form__input")
+const editFormError = editForm.querySelector(`#${editFormInput.id}-error`);
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    console.log('showInputError');
+
+    inputElement.classList.add("form__input_type_error");
+    // Show the error message
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add("form__input-error_active");
+  };
+
+  
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    console.log('hideInputError');
+    inputElement.classList.remove("form__input_type_error");
+    // Hide the error message
+    errorElement.classList.remove("form__input-error_active");
+    errorElement.textContent = "";
+  };
+
+
+const isValid = (formElement, inputElement) => {  
+    console.log(inputElement);  
+    if(!inputElement.validity.valid){
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+        
+    }else{
+        hideInputError(formElement, inputElement);
+    }
+}
+
+// editForm.addEventListener("submit", function(evt){
+//     evt.preventDefault();
+// });
+
+
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll(".form"));
+    formList.forEach((formElement) => {
+        formElement.addEventListener("submit", (evt) =>{
+            evt.preventDefault();
+        });
+        setEventListeners(formElement);
+    });
+}
+
+
+const setEventListeners = (formElement) => {  //Adding Handlers to All Form Fields
+    const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener("input", () => {
+            isValid(formElement, inputElement);
+        });
+    });
+}
+enableValidation();
+// editFormInput.addEventListener("input", isValid);
+
+
+
+
+
+
+
+
+

@@ -54,27 +54,37 @@
                     </footer>
                 </section>
                 
-                <form class = "form edit_form disabled">                    
+                <form class = "form edit_form disabled" novalidate>                    
                     <div class = "form__profile">
                         <button class = "form__close-button close_edit-form" aria-label="Close edit form" type="reset" ></button>
                         <h2 class = "form__title">Edit Profile</h2>
-                        <input type="text" placeholder="Title" class="form__input form__input_type_place-name">
-                        
-                        <input type="text" placeholder="Info" class="form__input form__input_type_info">
+                        <label class = "form__field">
+                            <input id = "place-name-input" type="text" placeholder="Title" class="form__input form__input_type_place-name" minlength = "2" maxlength="40" required>
+                            <span id = "place-name-input-error" class = "form__input-error">Please fill in this field</span>
+                        </label>
 
+                        <label class = "form__field">
+                            <input id = "info-input" type="text" placeholder="Info" class="form__input form__input_type_info" minlength = "2" maxlength="200" required>
+                            <span id = "info-input-error" class = "form__input-error">Please fill in this field</span>
+                        </label>
 
                         <button class = "form__button form__save-button" type="submit">Save</button>
                     </div>
                 </form> 
 
-                <form class = "form create_form disabled">                    
+                <form class = "form create_form disabled" novalidate>                    
                     <div class = "form__profile">
                         <button class = "form__close-button close_add-form" aria-label="Close add form" type="reset" ></button>
                         <h2 class = "form__title">New place</h2>
-                        <input type="text" placeholder="Title" class="form__input form__input_type_title">
+                        <label class = "form__field">
+                            <input  id = "title-input" type="text" placeholder="Title" class="form__input form__input_type_title" required>
+                            <span id = "title-input-error" class = "form__input-error">Please fill in this field</span>
+                        </label>
                         
-                        <input type="text" placeholder="URL" class="form__input form__input_type_link">
-
+                        <label class = "form__field">
+                            <input id = "url-input" type="URL" placeholder="url" class="form__input form__input_type_link" required>
+                            <span id = "url-input-error" class = "form__input-error">Please fill in this field</span>
+                        </label>                       
 
                         <button class = "form__button form__create-button" type="submit">Create</button>
                     </div>
