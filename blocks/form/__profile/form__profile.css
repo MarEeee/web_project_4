@@ -1,13 +1,15 @@
 .form__profile{
     display: flex;
     flex-direction: column;
-    position: static;
+    position: fixed;
     
     background-color: #FFFFFF;
     height: 330px;
     width: 430px;
     border-radius: 10px; 
     margin: 34px auto 54px;
+
+    z-index: 2;
 }
 
 

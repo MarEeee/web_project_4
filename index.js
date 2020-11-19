@@ -30,6 +30,9 @@ const newCardTitle = document.querySelector(".form__input_type_title");
 const newCardLink = document.querySelector(".form__input_type_link");
 
 
+
+
+
 const initialCards = [
     {
         name: "Dunwich Borers",
@@ -78,7 +81,19 @@ function showImage(image, title){
 }
 
 function closeBtnClick(currentForm){   
-    currentForm.classList.add("disabled");  
+    currentForm.classList.add("disabled");
+    const errorElements = Array.from(currentForm.querySelectorAll(".form__input-error"));
+    const inputElements = Array.from(currentForm.querySelectorAll(".form__input"));
+  
+    errorElements.forEach((errorElement) => {
+        errorElement.classList.remove("form__input-error_active");       
+        errorElement.textContent = "";
+    });
+    inputElements.forEach((inputElement) => {
+        inputElement.classList.remove("form__input_type_error");
+    });
+   
+
 }
 
 
@@ -144,6 +159,15 @@ closePopupButton.addEventListener("click", () => {
 });
 
 
+editForm.addEventListener("click", () => {  //                      doesn't work!
+    closeBtnClick(editForm);
+});
+createForm.addEventListener("click", () => {
+    closeBtnClick(createForm)
+});
+popup.addEventListener("click", () => {
+    closeBtnClick(popup)
+});
 
 // const editForm = document.querySelector(".edit_form"); 
 const editFormInput = editForm.querySelector(".form__input")
@@ -151,7 +175,7 @@ const editFormError = editForm.querySelector(`#${editFormInput.id}-error`);
 
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    console.log('showInputError');
+    
 
     inputElement.classList.add("form__input_type_error");
     // Show the error message
@@ -162,7 +186,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   
 const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    console.log('hideInputError');
+    
     inputElement.classList.remove("form__input_type_error");
     // Hide the error message
     errorElement.classList.remove("form__input-error_active");
@@ -170,8 +194,7 @@ const hideInputError = (formElement, inputElement) => {
   };
 
 
-const isValid = (formElement, inputElement) => {  
-    console.log(inputElement);  
+const isValid = (formElement, inputElement) => {      
     if(!inputElement.validity.valid){
         showInputError(formElement, inputElement, inputElement.validationMessage);
         
@@ -198,20 +221,40 @@ const enableValidation = () => {
 
 const setEventListeners = (formElement) => {  //Adding Handlers to All Form Fields
     const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+    const buttonElement = formElement.querySelector(".form__button");
+    console.log(formElement);
+    if(!formElement.classList.contains('edit_form')){
+        toggleButtonState(inputList, buttonElement);
+    }
+    
     inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
-            isValid(formElement, inputElement);
+            isValid(formElement, inputElement);            
+            toggleButtonState(inputList, buttonElement);
         });
     });
 }
+
+const hasInvalidInput = (inputList) => {    
+    return inputList.some((inputElement) => {
+        return !inputElement.validity.valid;
+    })
+}
+
+const toggleButtonState = (inputList, buttonElement) =>{
+    
+    if(hasInvalidInput(inputList)){
+        buttonElement.classList.add("form__button_inactive");
+        // buttonElement.setAttribute("disabled", "disabled");
+        
+    }else{
+        buttonElement.classList.remove("form__button_inactive");
+        // buttonElement.removeAttribute("disabled");
+    }
+}
+
+
+
 enableValidation();
-// editFormInput.addEventListener("input", isValid);
-
-
-
-
-
-
-
 
 

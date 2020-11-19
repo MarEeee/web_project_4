@@ -1,7 +1,8 @@
 .popup__close-button{
-   position: absolute;
-   top: -10%;
-   right: -7%;
+   position: relative;   
+    right: -19%;
+    top: -1%;        
+
     background-image: url("../../../images/Close-Icon.png");
     background-repeat: no-repeat;
     background-position: center;

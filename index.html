@@ -77,7 +77,7 @@
                         <button class = "form__close-button close_add-form" aria-label="Close add form" type="reset" ></button>
                         <h2 class = "form__title">New place</h2>
                         <label class = "form__field">
-                            <input  id = "title-input" type="text" placeholder="Title" class="form__input form__input_type_title" required>
+                            <input  id = "title-input" type="text" placeholder="Title" class="form__input form__input_type_title" minlength = "2" maxlength="30" required>
                             <span id = "title-input-error" class = "form__input-error">Please fill in this field</span>
                         </label>
                         
@@ -90,12 +90,11 @@
                     </div>
                 </form> 
                 
-                <div class = "popup disabled" tabindex="0">
+                <div class = "popup disabled" tabindex="0">    
+                    <button class = "popup__close-button" aria-label="Close popup" type="reset" ></button> 
+               
                     <img class = "popup__image" src="">
                     <p class = "popup__title"></p>
-                    <button class = "popup__close-button" aria-label="Close popup" type="reset" ></button>                    
-                    
-                    
                 </div>
 
             </main>

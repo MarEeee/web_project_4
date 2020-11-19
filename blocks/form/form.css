@@ -17,9 +17,8 @@
     justify-content: center;
     display: flex;
    
-
-    
-    opacity: 1;
     transition: visibility .2s linear, opacity .2s linear; 
+    z-index: 1;
+   
 }
 
