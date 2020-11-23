@@ -11,8 +11,8 @@
     top: 0;
 	left: 0;
 	align-items: center;
-	justify-content: center;
-    transition: opacity .3s ease-out;
+	justify-content: center;    
+    transition: visibility .2s linear, opacity .2s linear; 
 
     display: flex;
     flex-direction: column;
@@ -20,10 +20,6 @@
   }
 
 .popup__image{
-    /* display: flex; */
-    /* position: relative; */
-	/* justify-content: center;
-	align-items: center; */
     max-width: 80%;
 	max-height: 80%;
 	margin: 0 0 10px 0;

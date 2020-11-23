@@ -4,6 +4,11 @@
 @import url("./__save-button/form__save-button.css");
 @import url("./__title/form__title.css");
 @import url("./__button/form__button.css");
+@import url("./__field/form__field.css");
+
+/* @import url("./__import/_error/form__input_error.css");
+@import url("./__import/_error/_active/form__input_error_active.css");
+@import url("./__import/_type/form__input_type_error.css"); */
 
 .form{   
     color: #000;

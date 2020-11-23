@@ -3,6 +3,8 @@ const container = document.querySelector(".page");
 const editForm = document.querySelector(".edit_form"); 
 const createForm = document.querySelector(".create_form");
 
+const overlayEditForm = editForm.querySelector(".form__profile");
+const overlayCreateForm = createForm.querySelector(".form__profile");
 
 const editButton = container.querySelector(".profile__edit-button");
 const addButton = container.querySelector(".profile__add-button");
@@ -82,11 +84,11 @@ function showImage(image, title){
 
 function closeBtnClick(currentForm){   
     currentForm.classList.add("disabled");
-    const errorElements = Array.from(currentForm.querySelectorAll(".form__input-error"));
+    const errorElements = Array.from(currentForm.querySelectorAll(".form__input_error"));
     const inputElements = Array.from(currentForm.querySelectorAll(".form__input"));
   
     errorElements.forEach((errorElement) => {
-        errorElement.classList.remove("form__input-error_active");       
+        errorElement.classList.remove("form__input_error_active");       
         errorElement.textContent = "";
     });
     inputElements.forEach((inputElement) => {
@@ -127,9 +129,7 @@ function formSubmitHandlerEdit(evt){
 }
 
 function formSubmitHandlerCreate(evt){
-    evt.preventDefault();   
-    // const newCardTitle = document.querySelector(".form__input_type_title");
-    // const newCardLink = document.querySelector(".form__input_type_link");
+    evt.preventDefault();      
     addNewCard(newCardTitle.value, newCardLink.value);
     closeBtnClick(createForm); 
 }
@@ -159,102 +159,127 @@ closePopupButton.addEventListener("click", () => {
 });
 
 
-editForm.addEventListener("click", () => {  //                      doesn't work!
+editForm.addEventListener("mousedown", () => {  
     closeBtnClick(editForm);
 });
-createForm.addEventListener("click", () => {
-    closeBtnClick(createForm)
+createForm.addEventListener("mousedown", () => {
+    closeBtnClick(createForm);
 });
-popup.addEventListener("click", () => {
-    closeBtnClick(popup)
+popup.addEventListener("mousedown", () => {
+    closeBtnClick(popup);
 });
 
-// const editForm = document.querySelector(".edit_form"); 
-const editFormInput = editForm.querySelector(".form__input")
-const editFormError = editForm.querySelector(`#${editFormInput.id}-error`);
+editForm.addEventListener("keydown", (evt) => {  
+    console.log("dsadsa");
+    if (evt.key === 'Escape'){
+        closeBtnClick(editForm);
+    }
+    
+});
+createForm.addEventListener("keydown", (evt) => {
+    if (evt.key === 'Escape'){
+        closeBtnClick(createForm);
+    }
+    
+});
+popup.addEventListener("keydown", (evt) => {
+    if (evt.key === 'Escape'){
+        closeBtnClick(popup);
+    }
+    
+});
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+
+overlayEditForm.addEventListener("mousedown", (evt) => { 
+    evt.stopPropagation();
+});
+overlayCreateForm.addEventListener("mousedown", (evt) => {
+        evt.stopPropagation();
+});
+popupImage.addEventListener("mousedown", (evt) => {   
+    evt.stopPropagation();
+    
+});
+
+
+
+// const showInputError = (formElement, inputElement, errorMessage) => {
+//     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     
 
-    inputElement.classList.add("form__input_type_error");
-    // Show the error message
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add("form__input-error_active");
-  };
+//     inputElement.classList.add("form__input_type_error");
+//     // Show the error message
+//     errorElement.textContent = errorMessage;
+//     errorElement.classList.add("form__input-error_active");
+//   };
 
   
-const hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+// const hideInputError = (formElement, inputElement) => {
+//     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     
-    inputElement.classList.remove("form__input_type_error");
-    // Hide the error message
-    errorElement.classList.remove("form__input-error_active");
-    errorElement.textContent = "";
-  };
+//     inputElement.classList.remove("form__input_type_error");
+//     // Hide the error message
+//     errorElement.classList.remove("form__input-error_active");
+//     errorElement.textContent = "";
+//   };
 
 
-const isValid = (formElement, inputElement) => {      
-    if(!inputElement.validity.valid){
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+// const isValid = (formElement, inputElement) => {      
+//     if(!inputElement.validity.valid){
+//         showInputError(formElement, inputElement, inputElement.validationMessage);
         
-    }else{
-        hideInputError(formElement, inputElement);
-    }
-}
-
-// editForm.addEventListener("submit", function(evt){
-//     evt.preventDefault();
-// });
+//     }else{
+//         hideInputError(formElement, inputElement);
+//     }
+// }
 
 
-const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(".form"));
-    formList.forEach((formElement) => {
-        formElement.addEventListener("submit", (evt) =>{
-            evt.preventDefault();
-        });
-        setEventListeners(formElement);
-    });
-}
+
+// const enableValidation = () => {
+//     const formList = Array.from(document.querySelectorAll(".form"));
+//     formList.forEach((formElement) => {
+//         formElement.addEventListener("submit", (evt) =>{
+//             evt.preventDefault();
+//         });
+//         setEventListeners(formElement);
+//     });
+// }
 
 
-const setEventListeners = (formElement) => {  //Adding Handlers to All Form Fields
-    const inputList = Array.from(formElement.querySelectorAll(".form__input"));
-    const buttonElement = formElement.querySelector(".form__button");
-    console.log(formElement);
-    if(!formElement.classList.contains('edit_form')){
-        toggleButtonState(inputList, buttonElement);
-    }
+// const setEventListeners = (formElement) => {  //Adding Handlers to All Form Fields
+//     const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+//     const buttonElement = formElement.querySelector(".form__button");
+//     console.log(formElement);
+//     if(!formElement.classList.contains('edit_form')){
+//         toggleButtonState(inputList, buttonElement);
+//     }
     
-    inputList.forEach((inputElement) => {
-        inputElement.addEventListener("input", () => {
-            isValid(formElement, inputElement);            
-            toggleButtonState(inputList, buttonElement);
-        });
-    });
-}
+//     inputList.forEach((inputElement) => {
+//         inputElement.addEventListener("input", () => {
+//             isValid(formElement, inputElement);            
+//             toggleButtonState(inputList, buttonElement);
+//         });
+//     });
+// }
 
-const hasInvalidInput = (inputList) => {    
-    return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
-    })
-}
+// const hasInvalidInput = (inputList) => {    
+//     return inputList.some((inputElement) => {
+//         return !inputElement.validity.valid;
+//     })
+// }
 
-const toggleButtonState = (inputList, buttonElement) =>{
+// const toggleButtonState = (inputList, buttonElement) =>{
     
-    if(hasInvalidInput(inputList)){
-        buttonElement.classList.add("form__button_inactive");
-        // buttonElement.setAttribute("disabled", "disabled");
+//     if(hasInvalidInput(inputList)){
+//         buttonElement.classList.add("form__button_inactive");       
         
-    }else{
-        buttonElement.classList.remove("form__button_inactive");
-        // buttonElement.removeAttribute("disabled");
-    }
-}
+//     }else{
+//         buttonElement.classList.remove("form__button_inactive");        
+//     }
+// }
 
 
 
-enableValidation();
+// enableValidation();
 
 

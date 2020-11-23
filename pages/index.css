@@ -10,20 +10,8 @@
 @import url("../blocks/popup/popup.css");
 
 
-.form__input-error{
-    visibility: hidden;
-    margin-left: 36px;
-    margin-top:5px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 15px;
 
-    color: #FF0000;
-}
-
-.form__input-error_active{
+.form__input_error_active{
     visibility: visible;
 }
 
