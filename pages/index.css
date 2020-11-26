@@ -20,11 +20,6 @@
     border-bottom-color: red;
   } 
 
-.form__field{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 13px;
-}
 
 .form__button_inactive{
     opacity: 0.2;

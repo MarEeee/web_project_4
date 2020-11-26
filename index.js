@@ -169,24 +169,22 @@ popup.addEventListener("mousedown", () => {
     closeBtnClick(popup);
 });
 
-editForm.addEventListener("keydown", (evt) => {  
-    console.log("dsadsa");
+
+document.addEventListener("keydown", (evt) => {     
     if (evt.key === 'Escape'){
         closeBtnClick(editForm);
-    }
-    
+    }    
 });
-createForm.addEventListener("keydown", (evt) => {
+document.addEventListener("keydown", (evt) => {
     if (evt.key === 'Escape'){
         closeBtnClick(createForm);
-    }
-    
+    }    
 });
-popup.addEventListener("keydown", (evt) => {
+
+document.addEventListener("keydown", (evt) => {
     if (evt.key === 'Escape'){
         closeBtnClick(popup);
-    }
-    
+    }    
 });
 
 
