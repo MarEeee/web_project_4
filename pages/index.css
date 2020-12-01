@@ -1,5 +1,5 @@
 @import url("../blocks/header/header.css");
-@import url("../blocks/disabled/disabled.css");
+@import url("../blocks/popup-closed/popup-closed.css");
 @import url("../blocks/form/form.css");
 @import url("../blocks/page/page.css");
 @import url("../blocks/photo/photo.css");
@@ -11,7 +11,8 @@
 
 
 
-.form__input_error_active{
+.form__input_error_active{   /* Hello Aigul. I don't understand, but for some reason I cannot connect the files for these classes.
+                                        Please tell me what is my mistake*/    
     visibility: visible;
 }
 

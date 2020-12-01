@@ -7,17 +7,15 @@ const settingObject = {
     errorClass: "form__input_error_active"
   }; 
 
-console.log(settingObject);
-
-
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-
+    console.log(errorElement);
     inputElement.classList.add(settingObject.inputErrorClass);
     // Show the error message
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(settingObject.errorClass);
-  };
+    errorElement.classList.add(settingObject.errorClass); //I don't understand what the error is and how to fix it
+};                       
+                   
 
   
 const hideInputError = (formElement, inputElement) => {
@@ -73,13 +71,23 @@ const hasInvalidInput = (inputList) => {
     })
 }
 
+function disabledButton(button){
+     button.classList.add(settingObject.inactiveButtonClass);
+     button.setAttribute("disabled", "disabled");  
+}
+
+function activeButton(button){
+    button.classList.remove(settingObject.inactiveButtonClass); 
+    button.removeAttribute("disabled");  
+}
+
 const toggleButtonState = (inputList, buttonElement) =>{
     
     if(hasInvalidInput(inputList)){
-        buttonElement.classList.add(settingObject.inactiveButtonClass);       
+        disabledButton(buttonElement);                   
         
     }else{
-        buttonElement.classList.remove(settingObject.inactiveButtonClass);        
+        activeButton(buttonElement);   
     }
 }
 

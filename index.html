@@ -54,7 +54,7 @@
                     </footer>
                 </section>
                 
-                <form class = "form edit_form disabled" novalidate>                    
+                <form class = "form edit_form popup-closed" novalidate>                    
                     <div class = "form__profile">
                         <button class = "form__close-button close_edit-form" aria-label="Close edit form" type="reset" ></button>
                         <h2 class = "form__title">Edit Profile</h2>
@@ -72,7 +72,7 @@
                     </div>
                 </form> 
 
-                <form class = "form create_form disabled" novalidate>                    
+                <form class = "form create_form popup-closed" novalidate>                    
                     <div class = "form__profile">
                         <button class = "form__close-button close_add-form" aria-label="Close add form" type="reset" ></button>
                         <h2 class = "form__title">New place</h2>
@@ -90,7 +90,7 @@
                     </div>
                 </form> 
                 
-                <div class = "popup disabled" tabindex="0">    
+                <div class = "popup popup-closed" tabindex="0">    
                     <button class = "popup__close-button" aria-label="Close popup" type="reset" ></button> 
                
                     <img class = "popup__image" src="">
@@ -100,7 +100,8 @@
             </main>
         </div>
 
-        <script src="index.js"></script>
-        <script src="validate.js"></script>
+        <script src="scripts/initialCards.js"></script>
+        <script src="./scripts/index.js"></script>
+        <script src="./scripts/validate.js"></script>
     </body>
 </html>
