@@ -7,13 +7,13 @@ const settingObject = {
     errorClass: "form__input_error_active"
   }; 
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     console.log(errorElement);
-    inputElement.classList.add(settingObject.inputErrorClass);
+    inputElement.classList.add(inputErrorClass);
     // Show the error message
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(settingObject.errorClass); //I don't understand what the error is and how to fix it
+    errorElement.classList.add(errorClass); 
 };                       
                    
 
@@ -30,7 +30,7 @@ const hideInputError = (formElement, inputElement) => {
 
 const isValid = (formElement, inputElement) => {      
     if(!inputElement.validity.valid){
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+        showInputError(formElement, inputElement, inputElement.validationMessage, settingObject.inputErrorClass, settingObject.errorClass);
         
     }else{
         hideInputError(formElement, inputElement);
@@ -45,14 +45,14 @@ const enableValidation = (settingObject) => {
         formElement.addEventListener("submit", (evt) =>{
             evt.preventDefault();
         });
-        setEventListeners(formElement);
+        setEventListeners(formElement, settingObject.inputSelector, settingObject.submitButtonSelector);
     });
 }
 
 
-const setEventListeners = (formElement) => {  //Adding Handlers to All Form Fields
-    const inputList = Array.from(formElement.querySelectorAll(settingObject.inputSelector));
-    const buttonElement = formElement.querySelector(settingObject.submitButtonSelector);    
+const setEventListeners = (formElement, inputSelector, submitButtonSelector) => {  //Adding Handlers to All Form Fields
+    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    const buttonElement = formElement.querySelector(submitButtonSelector);    
     if(!formElement.classList.contains('edit_form')){
         toggleButtonState(inputList, buttonElement);
     }

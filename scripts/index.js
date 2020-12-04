@@ -12,7 +12,7 @@ const addButton = container.querySelector(".profile__add-button");
 const closeEditButton = container.querySelector('.close_edit-form');
 const closeAddButton = container.querySelector('.close_add-form');
 const closePopupButton = container.querySelector(".popup__close-button");
-
+const createButton = createForm.querySelector(".form__create-button");
 
 const placeNameInput = document.querySelector(".form__input_type_place-name");
 const infoInput = document.querySelector(".form__input_type_info");
@@ -37,33 +37,30 @@ const newCardLink = document.querySelector(".form__input_type_link");
 
 function openPopup(popup){
     popup.classList.remove("popup-closed");
+    escAddEventListener(popup);
 }
 
 
 function openEditInfo(){        
     openPopup(editForm);   
     placeNameInput.setAttribute("value", profileTitle.textContent);
-    infoInput.setAttribute("value", profileSubtitle.textContent);
-    escAddEventListener(editForm);
-    
+    infoInput.setAttribute("value", profileSubtitle.textContent);  
 }
 
 function openAddForm(){
     openPopup(createForm); 
     formInputTitle.value = "";
-    formInputLink.value = "";
+    formInputLink.value = "";    
     
-    buttonElement = createForm.querySelector(".form__create-button");
-    disabledButton(buttonElement);
-    escAddEventListener(createForm);   
+    disabledButton(createButton);
+    
 }
 
 function showImage(image, title){    
     openPopup(popupBoxImage);
     popupImage.src = image;
     popupImage.alt  = title;
-    popupTitle.textContent = title;
-    escAddEventListener(popupBoxImage, false);
+    popupTitle.textContent = title;   
 }
 
 function resetValidation(currentForm){
@@ -81,14 +78,13 @@ function resetValidation(currentForm){
 
 
 function closeForm(currentForm){   
-    currentForm.classList.add("popup-closed");;
+    closePopup(currentForm);
     resetValidation(currentForm);
-    escRemoveEventListener(currentForm);
 }
 
 function closePopup(currentForm){
     currentForm.classList.add("popup-closed");
-    escRemoveEventListener(currentForm, false);
+    escRemoveEventListener(currentForm);
 }
 
 
@@ -168,38 +164,24 @@ popupBoxImage.addEventListener("mousedown", () => {
     closePopup(popupBoxImage);
 });
 
-function escAddEventListener(currentForm, flag = true){
-    if(flag){
-        document.addEventListener("keydown", (evt) => {     
-            if (evt.key === 'Escape'){
-                closeForm(currentForm);
-            }    
-        });
-    }else{
-        document.addEventListener("keydown", (evt) => {     
-            if (evt.key === 'Escape'){
-                closePopup(currentForm);
-            }    
-        });
-    }   
+function escAddEventListener(currentForm){    
+    document.addEventListener("keydown", (evt) => {     
+        escPress(evt, currentForm)   
+    });
+    
 }
 
-function escRemoveEventListener(currentForm, flag = true){
-    if(flag){
-        document.removeEventListener("keydown", (evt) => {     
-            if (evt.key === 'Escape'){
-                closeForm(currentForm);
-            }    
-        });
-    }else{
-        document.removeEventListener("keydown", (evt) => {     
-            if (evt.key === 'Escape'){
-                closePopup(currentForm);
-            }   
-        });
-    }
+function escRemoveEventListener(currentForm){    
+    document.removeEventListener("keydown", (evt) => {     
+        escPress(evt, currentForm)   
+    });   
 }
 
+function escPress(evt, currentForm){
+    if (evt.key === 'Escape'){
+        closeForm(currentForm);
+    } 
+}
 
 overlayEditForm.addEventListener("mousedown", (evt) => { //    without these handlers, forms start to close on any click
     evt.stopPropagation();
