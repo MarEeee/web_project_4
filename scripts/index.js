@@ -183,7 +183,7 @@ function escPress(evt, currentForm){
     } 
 }
 
-overlayEditForm.addEventListener("mousedown", (evt) => { //    without these handlers, forms start to close on any click
+overlayEditForm.addEventListener("mousedown", (evt) => {
     evt.stopPropagation();
 });
 overlayCreateForm.addEventListener("mousedown", (evt) => {
@@ -193,3 +193,78 @@ popupImage.addEventListener("mousedown", (evt) => {
     evt.stopPropagation();
     
 });
+
+
+
+class Card{ 
+    constructor(data, selector){ //rename name-> title link -> url
+        this._title = data.title;
+        this._url = data.url;
+        this._selector = selector;
+    }
+
+    _getTemplate(){
+        const cardElement = querySelector(this._cardSelector)
+        .content
+        .cloneNode(true)
+
+        return cardElement;
+    }
+    generateCard(){
+        this._element = this._getTemplate();
+        this._setEventListener();
+
+        this._element.querySelector(".photo__title").textContent = this._title;
+        this._element.querySelector(".photo__image").alt = this._title;
+        this._element.querySelector(".photo__image").url = this._url;
+
+        return this._element;
+    }
+
+
+    _handleOpenPopup(){
+        openPopup(popupBoxImage);
+        popupImage.src = this.url;
+        popupImage.alt  = this._title;
+        popupTitle.textContent = this._title; 
+    }
+
+    _handleClosePopup(){
+        closePopup(popupBoxImage);
+    }
+
+    _setEventListener(){
+        this._element.addEventListener("click", ()=> {
+            _handleOpenPopup();
+        })
+
+        closePopupButton.addEventListener("click", () => {
+            _handleClosePopup();
+        })
+
+    }
+
+    addNewCard(){
+
+    }
+}
+
+const renderElements = () =>{
+    initialCards.forEach((item)=>{
+        const card = new Card(item, "#photo__element");
+    })
+    const cardElement = card.generateCard();
+    photoElements.append(cardElement);
+}
+
+class FormValidator{
+    constructor(data, selector){
+        // super(selector);
+        this.data = data;
+
+    }
+
+    enableValidation(){
+
+    }
+}
