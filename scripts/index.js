@@ -90,30 +90,30 @@ function closePopup(currentForm){
 
 
 
-function addNewCard(title, link){
-    const cardTemplate = document.querySelector("#photo__element").content;
-    const cardElement = cardTemplate.cloneNode(true);
-    const photoTitle  = cardElement.querySelector(".photo__title");
-    const photoImage = cardElement.querySelector(".photo__image");  
+// function addNewCard(title, link){
+//     const cardTemplate = document.querySelector("#photo__element").content;
+//     const cardElement = cardTemplate.cloneNode(true);
+//     const photoTitle  = cardElement.querySelector(".photo__title");
+//     const photoImage = cardElement.querySelector(".photo__image");  
     
-    photoTitle.textContent = title;
-    photoImage.src = link;
-    photoImage.alt = title;
+//     photoTitle.textContent = title;
+//     photoImage.src = link;
+//     photoImage.alt = title;
 
-    cardElement.querySelector(".photo__button").addEventListener("click", (evt) => {            
-        evt.target.classList.toggle("photo__button_active");
-    });
-    cardElement.querySelector(".photo__remove").addEventListener("click", (evt) => {
-        evt.target.parentNode.remove();        
+//     cardElement.querySelector(".photo__button").addEventListener("click", (evt) => {            
+//         evt.target.classList.toggle("photo__button_active");
+//     });
+//     cardElement.querySelector(".photo__remove").addEventListener("click", (evt) => {
+//         evt.target.parentNode.remove();        
 
-    });
+//     });
 
-    cardElement.querySelector(".photo__button-image").addEventListener("click", (item) =>{     
-        showImage(link, title);
-    });
+//     cardElement.querySelector(".photo__button-image").addEventListener("click", (item) =>{     
+//         showImage(link, title);
+//     });
     
-    return cardElement;   
-}
+//     return cardElement;   
+// }
 
 function formSubmitHandlerEdit(evt){
     evt.preventDefault();  
@@ -128,12 +128,12 @@ function formSubmitHandlerCreate(evt){
     closePopup(createForm); 
 }
 
-const initialCardsReverse = Object.assign([], initialCards).reverse();
+// const initialCardsReverse = Object.assign([], initialCards).reverse();
 
-initialCardsReverse.forEach(function(item){
+// initialCardsReverse.forEach(function(item){
     
-    photoElements.prepend(addNewCard(item.name, item.link)); 
- });
+//     photoElements.prepend(addNewCard(item.title, item.url)); 
+//  });
 
 editButton.addEventListener("click", openEditInfo);
 addButton.addEventListener("click", openAddForm);
@@ -149,9 +149,9 @@ closeEditButton.addEventListener("click", () => {
 closeAddButton.addEventListener("click", () => {
     closeForm(createForm)
 });
-closePopupButton.addEventListener("click", () => {
-    closePopup(popupBoxImage)
-});
+// closePopupButton.addEventListener("click", () => {
+//     closePopup(popupBoxImage)
+// });
 
 
 editForm.addEventListener("mousedown", () => {  
@@ -160,9 +160,9 @@ editForm.addEventListener("mousedown", () => {
 createForm.addEventListener("mousedown", () => {
     closeForm(createForm);
 });
-popupBoxImage.addEventListener("mousedown", () => {
-    closePopup(popupBoxImage);
-});
+// popupBoxImage.addEventListener("mousedown", () => {
+//     closePopup(popupBoxImage);
+// });
 
 function escAddEventListener(currentForm){    
     document.addEventListener("keydown", (evt) => {     
@@ -197,14 +197,14 @@ popupImage.addEventListener("mousedown", (evt) => {
 
 
 class Card{ 
-    constructor(data, selector){ //rename name-> title link -> url
+    constructor(data, cardSelector){ 
         this._title = data.title;
         this._url = data.url;
-        this._selector = selector;
+        this._cardSelector = cardSelector;
     }
 
     _getTemplate(){
-        const cardElement = querySelector(this._cardSelector)
+        const cardElement = document.querySelector(this._cardSelector)
         .content
         .cloneNode(true)
 
@@ -212,19 +212,17 @@ class Card{
     }
     generateCard(){
         this._element = this._getTemplate();
-        this._setEventListener();
+        this._setEventListeners();
 
         this._element.querySelector(".photo__title").textContent = this._title;
         this._element.querySelector(".photo__image").alt = this._title;
-        this._element.querySelector(".photo__image").url = this._url;
+        this._element.querySelector(".photo__image").src = this._url;
 
         return this._element;
     }
-
-
     _handleOpenPopup(){
         openPopup(popupBoxImage);
-        popupImage.src = this.url;
+        popupImage.src = this._url;
         popupImage.alt  = this._title;
         popupTitle.textContent = this._title; 
     }
@@ -233,29 +231,40 @@ class Card{
         closePopup(popupBoxImage);
     }
 
-    _setEventListener(){
-        this._element.addEventListener("click", ()=> {
-            _handleOpenPopup();
-        })
+    
+
+    _setEventListeners(){
+        console.log(this._element);
+        this._element.querySelector(".photo__button-image").addEventListener("click", ()=> {            
+            this._handleOpenPopup();
+        });
 
         closePopupButton.addEventListener("click", () => {
-            _handleClosePopup();
+            this._handleClosePopup();
         })
 
     }
+    
 
     addNewCard(){
 
+    }
+    showElement(){
+        console.log(this._title);
+        console.log(this._url);
     }
 }
 
 const renderElements = () =>{
     initialCards.forEach((item)=>{
         const card = new Card(item, "#photo__element");
-    })
-    const cardElement = card.generateCard();
-    photoElements.append(cardElement);
+        const cardElement = card.generateCard();
+        photoElements.append(cardElement);
+        // card.showElement(); // it works!!!
+    });    
 }
+
+renderElements();
 
 class FormValidator{
     constructor(data, selector){
