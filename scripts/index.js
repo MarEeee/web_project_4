@@ -239,6 +239,10 @@ class Card{
             this._handleOpenPopup();
         });
 
+        popupBoxImage.addEventListener("mousedown", () => {
+            closePopup(popupBoxImage);
+        });
+
         closePopupButton.addEventListener("click", () => {
             this._handleClosePopup();
         })
